@@ -23,6 +23,7 @@ public class UserController {
 	@RequestMapping("/{userName}")
 	public User getByName(@PathVariable String userName) {
 		System.out.println("userName = " + userName);
+		logger.info("userName = " + userName);
 		logger.error("出错了。。。");
 		return userService.getUserByName(userName);
 	}
@@ -40,8 +41,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/save_user", method = RequestMethod.POST)
-	public String saveUser(@RequestParam long id, @RequestParam String name,
-			@RequestParam int age, @RequestParam String password) {
+	public String saveUser(@RequestParam long id, @RequestParam String name, @RequestParam int age,
+			@RequestParam String password) {
 		User user = new User();
 		user.setAge(age);
 		user.setId(id);
