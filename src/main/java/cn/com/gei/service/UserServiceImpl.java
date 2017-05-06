@@ -11,7 +11,10 @@ import cn.com.gei.dao.UserMapper;
 import cn.com.gei.entity.User;
 
 @Service("userService")
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.REQUIRED) // 配置事务
+// @Transactional(propagation = Propagation.REQUIRED, transactionManager =
+// "springTransactionManager")
+// //这样写也可以，但注意，不要把transactionManager写错了，要写成对应的transactionManager
 public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserMapper userMapper;

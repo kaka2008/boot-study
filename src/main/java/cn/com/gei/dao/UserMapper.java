@@ -1,6 +1,7 @@
 package cn.com.gei.dao;
 
 import cn.com.gei.entity.User;
+
 /**
  * 
  * @author gei

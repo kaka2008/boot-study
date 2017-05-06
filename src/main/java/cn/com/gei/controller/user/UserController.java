@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.com.gei.entity.User;
 import cn.com.gei.service.IUserService;
+import cn.com.gei.service.IUserService2;
 
 @RestController
 @RequestMapping("/user")
@@ -19,11 +20,13 @@ public class UserController {
 	private Log logger = LogFactory.getLog(UserController.class);
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IUserService2 userService2;
 
 	@RequestMapping("/{userName}")
 	public User getByName(@PathVariable String userName) {
-		System.out.println("userName = " + userName);
-		logger.error("出错了。。。");
+		logger.info("userName = " + userName);
+		logger.info(userService2.getUserByName(userName));
 		return userService.getUserByName(userName);
 	}
 
@@ -40,8 +43,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/save_user", method = RequestMethod.POST)
-	public String saveUser(@RequestParam long id, @RequestParam String name,
-			@RequestParam int age, @RequestParam String password) {
+	public String saveUser(@RequestParam long id, @RequestParam String name, @RequestParam int age,
+			@RequestParam String password) {
 		User user = new User();
 		user.setAge(age);
 		user.setId(id);

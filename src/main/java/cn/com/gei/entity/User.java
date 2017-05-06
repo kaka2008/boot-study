@@ -58,4 +58,10 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "id:" + this.getId() + " name:" + this.getName() + " age:" + this.getAge() + " password:"
+				+ this.getPassword();
+	}
+
 }
